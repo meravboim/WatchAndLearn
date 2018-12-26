@@ -8,7 +8,7 @@ public class users  implements Serializable {
     protected String email;
     protected String name;
     protected String age;
-    protected String type;
+    protected String type=null;
 
     public users() {
     }

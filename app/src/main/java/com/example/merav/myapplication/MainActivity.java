@@ -81,13 +81,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             if (login) {
                                 Toast.makeText(MainActivity.this, "Welcome", Toast.LENGTH_LONG).show();
                                 if(user.getType().equals("teacher")){
+                                    teacher tea =dataSnapshot.child(email.replace(".", "|")).getValue(teacher.class);
                                     Intent mIntent = new Intent(getApplicationContext(), teacher_home.class);
-                                    mIntent.putExtra("user",user);
+                                    mIntent.putExtra("user",tea);
                                     startActivity(mIntent);
 
                                     }
-
-                              else {
+                                else if(user.getType().equals("student")){
                                     startActivity(new Intent(MainActivity.this, student_home.class));
                                 }
                             } else {

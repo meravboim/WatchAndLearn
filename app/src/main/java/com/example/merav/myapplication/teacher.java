@@ -60,4 +60,12 @@ public class teacher extends users {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public String toString() {
+        return "Name: " + name+ '\n' +
+                "Area: " + area + '\n' +
+                "Cost: " + cost + '\n' +
+                "Profession: " + profession + '\n' +
+                "Phone number: " + phone + '\n';
+    }
 }

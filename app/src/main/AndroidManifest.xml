@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".sign" />
-        <activity android:name=".teacher_home" />
-        <activity android:name=".student_home"></activity>
+        <activity android:name=".student_home" />
+        <activity android:name=".teacher_home"></activity>
     </application>
 
 </manifest>
