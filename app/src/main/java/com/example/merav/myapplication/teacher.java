@@ -2,13 +2,15 @@ package com.example.merav.myapplication;
 
 public class teacher extends users {
 
+    protected float rank;
+    protected int count;
     protected String area;
     protected String cost;
     protected String profession;
     protected String phone;
     protected String image="https://firebasestorage.googleapis.com/v0/b/myapplication-c864e.appspot.com/o/default_user.png?alt=media&token=257b33ff-4197-43b7-82af-74d6ad47e394";
 
-    public teacher( String Mail ,String password, String name, String age, String area, String cost, String profession,String phone){
+    public teacher( String Mail ,String password, String name, String age, String area, String cost, String profession,String phone,float rank,int count){
         this.age=age;
         this.email=Mail;
         this.name=name;
@@ -17,6 +19,8 @@ public class teacher extends users {
         this.cost=cost;
         this.profession=profession;
         this.phone=phone;
+        this.count=count;
+        this.rank=rank;
         this.type="teacher";
     }
     public teacher(){}
@@ -31,6 +35,22 @@ public class teacher extends users {
 
     public String getArea() {
         return area;
+    }
+
+    public float getRank() {
+        return rank;
+    }
+
+    public void setRank(float rank) {
+        this.rank = rank;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public void setArea(String area) {

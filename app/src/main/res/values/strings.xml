@@ -7,5 +7,6 @@
         <item>Teacher</item>
     </string-array>
     <string name="title_activity_upload_pic">upload_pic</string>
+    <string name="title_activity_teacher_page">teacher_page</string>
 
 </resources>

@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".sign" />
         <activity android:name=".student_home" />
-        <activity android:name=".teacher_home"></activity>
+        <activity android:name=".teacher_home" />
+        <activity android:name=".teacher_page"></activity>
     </application>
 
 </manifest>

@@ -11,4 +11,6 @@ public class student extends users {
         this.type="student";
 }
 
+    public student() {
+    }
 }
