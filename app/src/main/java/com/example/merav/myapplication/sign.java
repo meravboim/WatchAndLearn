@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +24,7 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth auth;
     String spinnerSelectedItem = "Student";
-    EditText passwords, passwordt, Names,Namet, emails,emailt, ages,aget,areat,costt,professiont;
+    EditText passwords, passwordt, Names,Namet, emails,emailt, ages,aget,areat,costt,professiont,phonet;
     Button ok_t,ok_s;
     LinearLayout t_layout,s_layout;
 
@@ -46,11 +45,11 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
         aget = (EditText) findViewById(R.id.age_t);
         areat = (EditText) findViewById(R.id.area);
         professiont= (EditText) findViewById(R.id.profession);
+        phonet = (EditText) findViewById(R.id.phone);
         costt = (EditText) findViewById(R.id.cost);
-        ok_s = (Button) findViewById(R.id.enter2);
-        ok_t = (Button) findViewById(R.id.enter);
-        t_layout=(LinearLayout)findViewById(R.id.t_layout);
-        s_layout=(LinearLayout)findViewById(R.id.s_layout);
+        ok_s = (Button) findViewById(R.id.oks);
+        ok_t = (Button) findViewById(R.id.okt);
+
 
 
 
@@ -63,12 +62,37 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 spinnerSelectedItem = parent.getItemAtPosition(position).toString(); //this is your selected item
                 if (spinnerSelectedItem.equals("Teacher")) {
-                   s_layout.setVisibility(view.INVISIBLE);
-                   t_layout.setVisibility(view.VISIBLE);
+                    passwords.setVisibility(view.INVISIBLE);
+                    Names.setVisibility(view.INVISIBLE);
+                    emails.setVisibility(view.INVISIBLE);
+                    ages.setVisibility(view.INVISIBLE);
+                    ok_s.setVisibility(view.INVISIBLE);
+                    passwordt.setVisibility(view.VISIBLE);
+                    Namet.setVisibility(view.VISIBLE);
+                    emailt.setVisibility(view.VISIBLE);
+                    aget.setVisibility(view.VISIBLE);
+                    areat.setVisibility(view.VISIBLE);
+                    professiont.setVisibility(view.VISIBLE);
+                    phonet.setVisibility(view.VISIBLE);
+                    costt.setVisibility(view.VISIBLE);
+                    ok_t.setVisibility(view.VISIBLE);
 
                 } else {
-                    t_layout.setVisibility(view.INVISIBLE);
-                    s_layout.setVisibility(view.VISIBLE);
+                    passwordt.setVisibility(view.INVISIBLE);
+                    Namet.setVisibility(view.INVISIBLE);
+                    emailt.setVisibility(view.INVISIBLE);
+                    aget.setVisibility(view.INVISIBLE);
+                    areat.setVisibility(view.INVISIBLE);
+                    professiont.setVisibility(view.INVISIBLE);
+                    phonet.setVisibility(view.INVISIBLE);
+                    costt.setVisibility(view.INVISIBLE);
+                    ok_t.setVisibility(view.INVISIBLE);
+                    passwords.setVisibility(view.VISIBLE);
+                    Names.setVisibility(view.VISIBLE);
+                    emails.setVisibility(view.VISIBLE);
+                    ages.setVisibility(view.VISIBLE);
+                    ok_s.setVisibility(view.VISIBLE);
+
                 }
             }
 
@@ -96,9 +120,10 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
                 String area_t = areat.getText().toString();
                 String cost_t = costt.getText().toString();
                 String profession_t = professiont.getText().toString();
-                if (!checkempty_t(pass_t, name_t, Mail_t, age_t, area_t,cost_t,profession_t))
+                String phone_t = phonet.getText().toString();
+                if (!checkempty_t(pass_t, name_t, Mail_t, age_t, area_t,cost_t,profession_t,phone_t))
                     return;
-                user = new teacher(Mail_t,pass_t, name_t,  age_t, area_t,cost_t,profession_t);
+                user = new teacher(Mail_t,pass_t, name_t,  age_t, area_t,cost_t,profession_t,phone_t);
             } else {
                 String pass_s = passwords.getText().toString();
                 String name_s = Names.getText().toString();
@@ -135,7 +160,7 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    public boolean checkempty_t(String password,String Name,String email,String age,String area,String cost,String profession){
+    public boolean checkempty_t(String password,String Name,String email,String age,String area,String cost,String profession,String phone){
 
             if ((TextUtils.isEmpty(password))) {
                 Toast.makeText(getApplicationContext(), "Please enter password", Toast.LENGTH_SHORT).show();
@@ -163,6 +188,10 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
             }
             if (TextUtils.isEmpty(profession)) {
                 Toast.makeText(getApplicationContext(), "Please enter profession", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            if (TextUtils.isEmpty(phone)) {
+                Toast.makeText(getApplicationContext(), "Please enter Phone Number", Toast.LENGTH_SHORT).show();
                 return false;
             }
             return true;

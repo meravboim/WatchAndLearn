@@ -8,6 +8,7 @@ public class student extends users {
         this.email=Mail;
         this.name=name;
         this.password=password;
-    }
+        this.type="student";
+}
 
 }

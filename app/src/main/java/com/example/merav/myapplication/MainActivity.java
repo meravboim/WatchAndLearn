@@ -3,13 +3,18 @@ package com.example.merav.myapplication;
 
 
 
+        import android.content.Context;
         import android.content.Intent;
+        import android.os.Parcelable;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.support.v7.widget.RecyclerView;
         import android.text.TextUtils;
+        import android.view.LayoutInflater;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.TextView;
         import android.widget.Toast;
         import android.support.annotation.NonNull;
         import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +23,11 @@ package com.example.merav.myapplication;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.database.ValueEventListener;
+
+
+        import android.view.ViewGroup;
+
+        import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -60,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             boolean login = false;
-                            users user;
+                            users user=null;
 
                             if (dataSnapshot.exists()) {
                                 user=dataSnapshot.child(email.replace(".", "|")).getValue(users.class);
@@ -70,10 +80,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                             if (login) {
                                 Toast.makeText(MainActivity.this, "Welcome", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(MainActivity.this, teacher_home.class));
+                                if(user.getType().equals("teacher")){
+                                    Intent mIntent = new Intent(getApplicationContext(), teacher_home.class);
+                                    mIntent.putExtra("user",user);
+                                    startActivity(mIntent);
+
+                                    }
+
+                              else {
+                                    startActivity(new Intent(MainActivity.this, student_home.class));
+                                }
                             } else {
                                 Toast.makeText(MainActivity.this, "Either email or password is incorrect.", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(MainActivity.this, student_home.class));
                             }
                         }
 
@@ -105,5 +123,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         return true;
     }
+
 
 }

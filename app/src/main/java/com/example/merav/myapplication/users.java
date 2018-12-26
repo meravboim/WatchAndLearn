@@ -1,13 +1,24 @@
 package com.example.merav.myapplication;
 
-public class users {
+import java.io.Serializable;
+
+public class users  implements Serializable {
 
     protected String password;
     protected String email;
     protected String name;
     protected String age;
+    protected String type;
 
     public users() {
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getPassword() {
