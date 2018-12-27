@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 if(user.getType().equals("teacher")){
                                     teacher tea =dataSnapshot.child(email.replace(".", "|")).getValue(teacher.class);
                                     Intent mIntent = new Intent(getApplicationContext(), teacher_home.class);
-                                    //Intent mIntent = new Intent(getApplicationContext(), teacher_page.class);
                                     mIntent.putExtra("user",tea);
                                     startActivity(mIntent);
 

@@ -1,25 +1,27 @@
 package com.example.merav.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
+import com.google.firebase.database.Query;
 
 public class student_home extends AppCompatActivity {
 
-    private ListView mListView;
-    private ArrayList<teacher> listTeacher = new ArrayList<>();
+    RecyclerView recyclerView;
+    DatabaseReference db;
+
 
 
     @Override
@@ -27,29 +29,41 @@ public class student_home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_home);
 
-        final DatabaseReference db = FirebaseDatabase.getInstance().getReference("Teachers");
-        mListView = (ListView) findViewById(R.id.listTea);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("hi");
 
-        final ArrayAdapter<teacher> arrayAdapter = new ArrayAdapter<teacher>(this, android.R.layout.simple_list_item_1, listTeacher);
+        recyclerView = findViewById(R.id.rv);
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        db = FirebaseDatabase.getInstance().getReference("Teachers");
+
+        Query firebaseSearchQuery = db.orderByChild("rank").limitToFirst(10);
+
+        FirebaseRecyclerOptions<teacher> options = new FirebaseRecyclerOptions.Builder<teacher>()
+                .setQuery(firebaseSearchQuery, teacher.class)
+                .build();
+
+        FirebaseRecyclerAdapter<teacher, ViewHolder> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<teacher, ViewHolder>(options) {
+                    @NonNull
+                    @Override
+                    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+                        View view=getLayoutInflater().from(viewGroup.getContext()).inflate(R.layout.teacherdat,viewGroup,false);
+                        ViewHolder viewHolder =new ViewHolder(view);
+                        return viewHolder;
+                    }
+
+                    protected void onBindViewHolder(@NonNull final ViewHolder holder, int position, @NonNull final teacher model) {
+                        holder.setdetails(getApplicationContext(),model, model.getName(), model.getProfession(),model.getArea(),
+                                model.getImage(),model.getRank());
+
+                    }
 
 
-        db.addValueEventListener(new ValueEventListener() {
-                                     @Override
-                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                         for (DataSnapshot data:dataSnapshot.getChildren()){
-                                             teacher models = data.getValue(teacher.class);
-                                             listTeacher.add(models);
-
-                                         }
-
-                                         mListView.setAdapter(arrayAdapter);
-                                     }
-
-                                     @Override
-                                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                     }
-                                 }
-        );
+                };
+        recyclerView.setAdapter(firebaseRecyclerAdapter);
+        firebaseRecyclerAdapter.startListening();
     }
 }

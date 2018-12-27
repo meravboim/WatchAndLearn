@@ -5,9 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,10 +24,9 @@ public class teacher_page extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_teacher_page);
         Intent intent=getIntent();
         user=(teacher)intent.getSerializableExtra("user");
-
        // ImageView mImage=(ImageView)findViewById(R.id.profile_image);
-        rate=(Button)findViewById(R.id.rate);
-        submit=(Button)findViewById(R.id.submit);
+        rate=(Button)findViewById(R.id.Rate);
+        submit=(Button)findViewById(R.id.Submit);
         showRatingBar = (RatingBar) findViewById(R.id.show_rating_bar);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         name = (TextView) findViewById(R.id.name);
