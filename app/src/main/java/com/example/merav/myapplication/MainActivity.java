@@ -101,14 +101,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean checkempty(String password,String email){
 
-        if ((TextUtils.isEmpty(password))) {
-            Toast.makeText(getApplicationContext(), "Please enter password", Toast.LENGTH_SHORT).show();
-            return false;
-        }
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if ((TextUtils.isEmpty(password))) {
+            Toast.makeText(getApplicationContext(), "Please enter password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
 
         return true;
     }

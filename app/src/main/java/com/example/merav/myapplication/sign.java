@@ -50,9 +50,6 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
         ok_s = (Button) findViewById(R.id.oks);
         ok_t = (Button) findViewById(R.id.okt);
 
-
-
-
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(sign.this, android.R.layout.simple_list_item_1
                 , getResources().getStringArray(R.array.typeSpinner));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -95,22 +92,17 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
 
                 }
             }
-
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
         ok_s.setOnClickListener(this);
         ok_t.setOnClickListener(this);
-
     }
 
     public void onClick(View v) {
         if(v == ok_s||v == ok_t) {
             final DatabaseReference db = FirebaseDatabase.getInstance().getReference();
             final users user;
-
 
             if (spinnerSelectedItem.equals("Teacher")) {
                 String pass_t = passwordt.getText().toString();
@@ -161,7 +153,10 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
     }
 
     public boolean checkempty_t(String password,String Name,String email,String age,String area,String cost,String profession,String phone){
-
+            if (TextUtils.isEmpty(email)) {
+                 Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_SHORT).show();
+                 return false;
+            }
             if ((TextUtils.isEmpty(password))) {
                 Toast.makeText(getApplicationContext(), "Please enter password", Toast.LENGTH_SHORT).show();
                 return false;
@@ -170,45 +165,41 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(getApplicationContext(), "Please enter Name", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if (TextUtils.isEmpty(email)) {
-                Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            if ((TextUtils.isEmpty(age))) {
-                Toast.makeText(getApplicationContext(), "Please enter age", Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(phone)) {
+                Toast.makeText(getApplicationContext(), "Please enter Phone Number", Toast.LENGTH_SHORT).show();
                 return false;
             }
             if (TextUtils.isEmpty(area)) {
                 Toast.makeText(getApplicationContext(), "Please enter area", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if (TextUtils.isEmpty(cost)) {
-                Toast.makeText(getApplicationContext(), "Please enter cost", Toast.LENGTH_SHORT).show();
-                return false;
-            }
             if (TextUtils.isEmpty(profession)) {
                 Toast.makeText(getApplicationContext(), "Please enter profession", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if (TextUtils.isEmpty(phone)) {
-                Toast.makeText(getApplicationContext(), "Please enter Phone Number", Toast.LENGTH_SHORT).show();
+            if ((TextUtils.isEmpty(age))) {
+                Toast.makeText(getApplicationContext(), "Please enter age", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            if (TextUtils.isEmpty(cost)) {
+                Toast.makeText(getApplicationContext(), "Please enter cost", Toast.LENGTH_SHORT).show();
                 return false;
             }
             return true;
     }
 
     public boolean checkempty_s(String password,String Name,String email,String age){
-
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if ((TextUtils.isEmpty(password))) {
             Toast.makeText(getApplicationContext(), "Please enter password", Toast.LENGTH_SHORT).show();
             return false;
         }
         if ((TextUtils.isEmpty(Name))) {
             Toast.makeText(getApplicationContext(), "Please enter Name", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_SHORT).show();
             return false;
         }
         if ((TextUtils.isEmpty(age))) {
