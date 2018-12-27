@@ -123,7 +123,7 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
                 String phone_t = phonet.getText().toString();
                 if (!checkempty_t(pass_t, name_t, Mail_t, age_t, area_t,cost_t,profession_t,phone_t))
                     return;
-                user = new teacher(Mail_t,pass_t, name_t,  age_t, area_t,cost_t,profession_t,phone_t,0,0);
+                user = new teacher(Mail_t,pass_t, name_t,  age_t, area_t,cost_t,profession_t,phone_t,0);
             } else {
                 String pass_s = passwords.getText().toString();
                 String name_s = Names.getText().toString();

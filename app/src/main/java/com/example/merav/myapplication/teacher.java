@@ -10,7 +10,7 @@ public class teacher extends users {
     protected String phone;
     protected String image="https://firebasestorage.googleapis.com/v0/b/myapplication-c864e.appspot.com/o/default_user.png?alt=media&token=257b33ff-4197-43b7-82af-74d6ad47e394";
 
-    public teacher( String Mail ,String password, String name, String age, String area, String cost, String profession,String phone,float rank,int count){
+    public teacher( String Mail ,String password, String name, String age, String area, String cost, String profession,String phone,float rank){
         this.age=age;
         this.email=Mail;
         this.name=name;
@@ -19,7 +19,6 @@ public class teacher extends users {
         this.cost=cost;
         this.profession=profession;
         this.phone=phone;
-        this.count=count;
         this.rank=rank;
         this.type="teacher";
     }

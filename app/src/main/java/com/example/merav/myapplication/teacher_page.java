@@ -66,6 +66,8 @@ public class teacher_page extends AppCompatActivity implements View.OnClickListe
             submit.setVisibility(View.INVISIBLE);
 
             db.child("Teachers").child(user.getEmail().replace(".", "|")).setValue(user);
+            db.child("Users").child(user.getEmail().replace(".", "|")).setValue(user);
+
 
         }
 
