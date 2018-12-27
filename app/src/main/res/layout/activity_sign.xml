@@ -7,6 +7,21 @@
     android:layout_height="match_parent"
     android:background="@drawable/my_bg">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="88dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logoo" />
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="198dp"
@@ -176,6 +191,7 @@
 
         <Button
             android:id="@+id/okt"
+            style="@android:style/Widget.DeviceDefault.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -184,7 +200,10 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="6dp"
+            android:background="@drawable/button_elipse"
             android:text="OK"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -273,6 +292,7 @@
 
         <Button
             android:id="@+id/oks"
+            style="@android:style/Widget.DeviceDefault.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -281,7 +301,10 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/button_elipse"
             android:text="OK"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

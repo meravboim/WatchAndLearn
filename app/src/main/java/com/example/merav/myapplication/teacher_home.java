@@ -21,7 +21,7 @@ public class teacher_home extends AppCompatActivity {
         data = (TextView) findViewById(R.id.data);
         ratingBar.setIsIndicator(true);
         ratingBar.setRating(user.getRank());
-        hello.setText("Hello "+user.getName());
+        hello.setText("Hello "+user.getName()+",");
         data.setText("Name: "+user.getName()+"\n"+"Email: "+user.getEmail()+"\n"+"Password: "+user.getPassword()+"\n"+
                 "Profession: "+user.getProfession()+"\n"+"Area: "+user.getArea()+"\n"+"Cost: "+user.getCost()+"\n"+"Age: "+user.getAge()+"\n"+ "Phone: "+user.getPhone()+"\n");
 
