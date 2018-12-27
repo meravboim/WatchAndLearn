@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.merav.myapplication">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +21,9 @@
         <activity android:name=".sign" />
         <activity android:name=".student_home" />
         <activity android:name=".teacher_home" />
-        <activity android:name=".teacher_page"></activity>
+        <activity android:name=".teacher_page" />
+        <activity android:name=".activity_serch" />
+        <activity android:name=".results_for_search" />
     </application>
 
 </manifest>
