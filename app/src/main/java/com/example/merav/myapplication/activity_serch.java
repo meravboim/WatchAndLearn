@@ -5,6 +5,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -60,6 +61,10 @@ public class activity_serch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serch);
+
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Watch&Learn");
 
         myLayout = (ConstraintLayout) findViewById(R.id.myLayout);
 

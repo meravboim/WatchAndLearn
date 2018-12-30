@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -17,10 +18,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class student_home extends AppCompatActivity {
+public class student_home extends AppCompatActivity implements View.OnClickListener {
 
     RecyclerView recyclerView;
     DatabaseReference db;
+    Button search;
 
 
 
@@ -30,13 +32,13 @@ public class student_home extends AppCompatActivity {
         setContentView(R.layout.activity_student_home);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("hi");
+        actionBar.setTitle("Watch&Learn");
 
         recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
-
+        search= findViewById(R.id.bn);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        search.setOnClickListener(this);
         db = FirebaseDatabase.getInstance().getReference("Teachers");
 
         Query firebaseSearchQuery = db.orderByChild("rank").limitToFirst(10);
@@ -65,5 +67,10 @@ public class student_home extends AppCompatActivity {
                 };
         recyclerView.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
+    }
+
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(this,activity_serch.class));
     }
 }

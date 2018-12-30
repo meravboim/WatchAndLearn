@@ -3,6 +3,7 @@ package com.example.merav.myapplication;
 
 
         import android.content.Intent;
+        import android.support.v7.app.ActionBar;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.text.TextUtils;
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Watch&Learn");
 
         login = (Button) findViewById(R.id.Button_login);
         sign = (Button)findViewById(R.id.Button_sign);

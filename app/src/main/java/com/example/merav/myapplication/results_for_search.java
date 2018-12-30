@@ -1,6 +1,7 @@
 package com.example.merav.myapplication;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,9 @@ public class results_for_search extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_for_search);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Watch&Learn");
 
         Intent intent=getIntent();
         ArrayList<teacher> teachers_list;
