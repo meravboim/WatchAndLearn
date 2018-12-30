@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 public class teacher_home extends AppCompatActivity {
@@ -33,8 +34,7 @@ public class teacher_home extends AppCompatActivity {
         hello.setText("Hello "+user.getName()+",");
         data.setText("Name: "+user.getName()+"\n"+"Email: "+user.getEmail()+"\n"+"Password: "+user.getPassword()+"\n"+
                 "Profession: "+user.getProfession()+"\n"+"Area: "+user.getArea()+"\n"+"Cost: "+user.getCost()+"\n"+"Age: "+user.getAge()+"\n"+ "Phone: "+user.getPhone()+"\n");
-        Picasso.get().load(user.getImage()).into(mImage);
-
+        Glide.with(getBaseContext()).load(user.getImage()).into(mImage);
 
 
     }

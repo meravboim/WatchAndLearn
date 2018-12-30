@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             if (dataSnapshot.exists()) {
                                 user=dataSnapshot.child(email.replace(".", "|")).getValue(users.class);
+                                if(user==null){
+                                    Toast.makeText(MainActivity.this, " Email does not exist ", Toast.LENGTH_LONG).show();
+                                    return;
+                                }
                                 if (password.equals(user.getPassword())) {
                                     login = true;
                                 }

@@ -8,8 +8,9 @@ public class teacher extends users {
     protected String cost;
     protected String profession;
     protected String phone;
-    protected String image="https://firebasestorage.googleapis.com/v0/b/lessonsapp-37d29.appspot.com/o/WhatsApp%20Image%202018-12-19%20at%2012.33.35.jpeg?alt=media&token=971c0893-0593-4bd0-a94b-2f904cb9c0be";
-    public teacher( String Mail ,String password, String name, String age, String area, String cost, String profession,String phone,float rank){
+    protected String image;
+
+    public teacher( String Mail ,String password, String name, String age, String area, String cost, String profession,String phone,float rank,String image){
         this.age=age;
         this.email=Mail;
         this.name=name;
@@ -19,6 +20,7 @@ public class teacher extends users {
         this.profession=profession;
         this.phone=phone;
         this.rank=rank;
+        this.image=image;
         this.type="teacher";
     }
     public teacher(){}

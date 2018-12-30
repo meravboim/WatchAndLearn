@@ -1,5 +1,6 @@
 package com.example.merav.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
@@ -14,6 +15,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.app.AlertDialog;
+
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 public class sign extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth auth;
@@ -120,7 +125,7 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
                 String phone_t = phonet.getText().toString();
                 if (!checkempty_t(pass_t, name_t, Mail_t, age_t, area_t,cost_t,profession_t,phone_t))
                     return;
-                user = new teacher(Mail_t,pass_t, name_t,  age_t, area_t,cost_t,profession_t,phone_t,0);
+                user = new teacher(Mail_t,pass_t, name_t,  age_t, area_t,cost_t,profession_t,phone_t,0,"https://firebasestorage.googleapis.com/v0/b/lessonsapp-37d29.appspot.com/o/WhatsApp%20Image%202018-12-19%20at%2012.33.35.jpeg?alt=media&token=971c0893-0593-4bd0-a94b-2f904cb9c0be");
             } else {
                 String pass_s = passwords.getText().toString();
                 String name_s = Names.getText().toString();
@@ -155,6 +160,7 @@ public class sign extends AppCompatActivity implements View.OnClickListener {
                         }
                     });
         }
+
     }
 
     public boolean checkempty_t(String password,String Name,String email,String age,String area,String cost,String profession,String phone){

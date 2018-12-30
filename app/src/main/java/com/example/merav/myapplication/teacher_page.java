@@ -44,7 +44,6 @@ public class teacher_page extends AppCompatActivity implements View.OnClickListe
 
         Picasso.get().load(user.getImage()).into(mImage);
         showRatingBar.setIsIndicator(true);
-       // Glide.with(getBaseContext()).load(user.getImage()).into(mImage);
         rate.setOnClickListener(this);
         submit.setOnClickListener(this);
 
